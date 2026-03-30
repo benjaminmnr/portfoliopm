@@ -379,37 +379,7 @@ nav {
   font-size:11px;color:var(--muted2);line-height:1.6;
 }
 
-/* QUOTE */
-#quote {
-  padding:120px 60px;
-  border-top:1px solid var(--border);
-  background:var(--bg);
-  display:flex;align-items:center;justify-content:center;
-  position:relative;overflow:hidden;
-}
-.quote-orb {
-  position:absolute;width:500px;height:500px;
-  background:radial-gradient(circle,rgba(233,162,39,0.05) 0%,transparent 65%);
-  top:50%;left:50%;transform:translate(-50%,-50%);
-  pointer-events:none;
-}
-.quote-inner {
-  max-width:800px;text-align:center;position:relative;z-index:1;
-}
-.quote-mark {
-  font-family:var(--serif);font-size:80px;line-height:.6;
-  color:var(--amber-mid);display:block;margin-bottom:24px;
-}
-.quote-text {
-  font-family:var(--serif);font-size:clamp(22px,3vw,36px);
-  line-height:1.45;letter-spacing:-.01em;
-  color:var(--text);margin-bottom:32px;
-}
-.quote-text em { font-style:italic;color:var(--amber); }
-.quote-author {
-  font-family:var(--syne);font-size:11px;font-weight:700;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
-}
+
 
 /* TOOLS — FLAT (always open) */
 #tools {
@@ -895,7 +865,7 @@ footer {
   <div class="hero-orb2"></div>
   <p class="hero-tag" data-en="Benjamin Maunier · Montreal">Benjamin Maunier · Montreal</p>
   <h1 class="hero-h1">
-    Hi, I'm Ben. 👋<br>
+    Hi, I'm Ben 👋<br>
     Montreal-based<br>
     <em>Product Manager.</em>
   </h1>
@@ -956,14 +926,135 @@ footer {
   </div>
 </section>
 
-<!-- QUOTE -->
-<section id="quote">
-  <div class="quote-orb"></div>
-  <div class="quote-inner reveal">
-    <span class="quote-mark">"</span>
-    <p class="quote-text">You can only connect the dots looking backwards. So you must believe that they somehow will. And <em>take the leap forward,</em> now.</p>
-    <p class="quote-author">Steve Jobs</p>
-  </div>
+
+
+<!-- CITYSCAPE -->
+<section id="cityscape" style="border-top:1px solid rgba(237,233,224,0.07);overflow:hidden;line-height:0;">
+  <svg width="100%" viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg">
+    <style>
+      .msky { fill: #0c0b09; }
+      .mmountain { fill: #161412; }
+      .mmountain-outline { fill: none; stroke: rgba(79,142,247,0.25); stroke-width: 1.5; }
+      .mtrees { fill: #111009; }
+      .mbuilding { fill: #131210; stroke: rgba(79,142,247,0.12); stroke-width: 0.5; }
+      .mbuilding-lit { fill: #1c1916; stroke: rgba(79,142,247,0.22); stroke-width: 0.5; }
+      .mwindow { fill: rgba(79,142,247,0.6); }
+      .mwindow-warm { fill: rgba(240,200,100,0.5); }
+      .mwindow-off { fill: rgba(237,233,224,0.05); }
+      .mcross { fill: none; stroke: rgba(79,142,247,0.9); stroke-width: 2; stroke-linecap: round; }
+      .mcross-glow { fill: none; stroke: rgba(79,142,247,0.2); stroke-width: 6; stroke-linecap: round; }
+      .mantenna { fill: none; stroke: rgba(237,233,224,0.25); stroke-width: 1; }
+      .mstar { fill: rgba(237,233,224,0.6); }
+      .mground { fill: #0e0d0b; }
+      .mriver { fill: rgba(79,142,247,0.07); }
+      .mreflection { fill: rgba(79,142,247,0.15); }
+    </style>
+    <rect class="msky" width="680" height="320"/>
+    <circle class="mstar" cx="40" cy="25" r="1"/>
+    <circle class="mstar" cx="110" cy="14" r="0.8"/>
+    <circle class="mstar" cx="180" cy="32" r="1"/>
+    <circle class="mstar" cx="490" cy="20" r="0.8"/>
+    <circle class="mstar" cx="570" cy="12" r="1"/>
+    <circle class="mstar" cx="630" cy="30" r="0.8"/>
+    <circle class="mstar" cx="75" cy="48" r="0.6"/>
+    <circle class="mstar" cx="545" cy="42" r="0.6"/>
+    <path class="mmountain" d="M 20,220 Q 80,170 130,158 Q 180,148 210,138 Q 240,128 260,132 Q 280,136 300,148 Q 320,160 360,200 Q 400,230 440,240 L 440,320 L 20,320 Z"/>
+    <path class="mmountain-outline" d="M 20,220 Q 80,170 130,158 Q 180,148 210,138 Q 240,128 260,132 Q 280,136 300,148 Q 320,160 360,200"/>
+    <path class="mtrees" d="M 130,162 Q 160,155 190,150 Q 210,146 230,142 Q 250,138 268,138 Q 275,138 280,140 L 280,172 L 130,172 Z"/>
+    <line class="mcross-glow" x1="240" y1="100" x2="240" y2="138"/>
+    <line class="mcross-glow" x1="226" y1="112" x2="254" y2="112"/>
+    <line class="mcross" x1="240" y1="100" x2="240" y2="138"/>
+    <line class="mcross" x1="226" y1="112" x2="254" y2="112"/>
+    <circle style="fill:rgba(79,142,247,0.9)" cx="240" cy="99" r="2"/>
+
+    <!-- Location label -->
+    <line x1="48" y1="42" x2="48" y2="56" stroke="rgba(79,142,247,0.5)" stroke-width="1"/>
+    <circle cx="48" cy="58" r="2" fill="rgba(79,142,247,0.7)"/>
+    <text x="58" y="50" font-family="'Syne', sans-serif" font-size="11" font-weight="700" letter-spacing="2.5" fill="rgba(237,233,224,0.75)">MONTREAL</text>
+    <text x="58" y="63" font-family="'Syne', sans-serif" font-size="9" font-weight="400" letter-spacing="1.5" fill="rgba(79,142,247,0.6)">QC, CANADA</text>
+
+    <rect class="mbuilding" x="22" y="190" width="28" height="98"/>
+    <rect class="mbuilding" x="52" y="178" width="22" height="110"/>
+    <rect class="mbuilding" x="76" y="195" width="18" height="93"/>
+    <rect class="mbuilding" x="592" y="182" width="26" height="106"/>
+    <rect class="mbuilding" x="620" y="190" width="20" height="98"/>
+    <rect class="mbuilding" x="642" y="178" width="32" height="110"/>
+    <rect class="mbuilding-lit" x="98" y="162" width="34" height="126"/>
+    <rect class="mbuilding" x="134" y="175" width="28" height="113"/>
+    <rect class="mbuilding-lit" x="512" y="155" width="38" height="133"/>
+    <rect class="mbuilding" x="552" y="168" width="30" height="120"/>
+    <rect class="mbuilding" x="178" y="145" width="36" height="143"/>
+    <rect class="mbuilding-lit" x="216" y="125" width="44" height="163"/>
+    <rect class="mbuilding-lit" x="270" y="95" width="46" height="193"/>
+    <rect class="mbuilding-lit" x="256" y="108" width="74" height="10"/>
+    <line class="mantenna" x1="293" y1="95" x2="293" y2="70"/>
+    <circle style="fill:rgba(79,142,247,0.85)" cx="293" cy="68" r="2.5"/>
+    <rect class="mbuilding-lit" x="342" y="110" width="42" height="178"/>
+    <ellipse class="mbuilding-lit" cx="363" cy="110" rx="21" ry="13"/>
+    <rect class="mbuilding" x="396" y="130" width="32" height="158"/>
+    <rect class="mbuilding-lit" x="430" y="120" width="38" height="168"/>
+    <rect class="mbuilding" x="470" y="150" width="28" height="138"/>
+    <rect class="mbuilding" x="500" y="160" width="24" height="128"/>
+    <rect class="mwindow" x="275" y="103" width="5" height="4"/>
+    <rect class="mwindow" x="285" y="103" width="5" height="4"/>
+    <rect class="mwindow-off" x="295" y="103" width="5" height="4"/>
+    <rect class="mwindow-off" x="275" y="113" width="5" height="4"/>
+    <rect class="mwindow" x="285" y="113" width="5" height="4"/>
+    <rect class="mwindow" x="295" y="113" width="5" height="4"/>
+    <rect class="mwindow-warm" x="275" y="123" width="5" height="4"/>
+    <rect class="mwindow-off" x="285" y="123" width="5" height="4"/>
+    <rect class="mwindow" x="295" y="123" width="5" height="4"/>
+    <rect class="mwindow" x="275" y="133" width="5" height="4"/>
+    <rect class="mwindow" x="285" y="133" width="5" height="4"/>
+    <rect class="mwindow-warm" x="295" y="133" width="5" height="4"/>
+    <rect class="mwindow-off" x="275" y="143" width="5" height="4"/>
+    <rect class="mwindow" x="285" y="143" width="5" height="4"/>
+    <rect class="mwindow" x="295" y="143" width="5" height="4"/>
+    <rect class="mwindow" x="275" y="153" width="5" height="4"/>
+    <rect class="mwindow-warm" x="285" y="153" width="5" height="4"/>
+    <rect class="mwindow-off" x="295" y="153" width="5" height="4"/>
+    <rect class="mwindow" x="275" y="163" width="5" height="4"/>
+    <rect class="mwindow" x="285" y="163" width="5" height="4"/>
+    <rect class="mwindow" x="295" y="163" width="5" height="4"/>
+    <rect class="mwindow" x="347" y="120" width="5" height="4"/>
+    <rect class="mwindow-off" x="358" y="120" width="5" height="4"/>
+    <rect class="mwindow" x="369" y="120" width="5" height="4"/>
+    <rect class="mwindow-warm" x="347" y="132" width="5" height="4"/>
+    <rect class="mwindow" x="358" y="132" width="5" height="4"/>
+    <rect class="mwindow-off" x="369" y="132" width="5" height="4"/>
+    <rect class="mwindow" x="347" y="144" width="5" height="4"/>
+    <rect class="mwindow" x="358" y="144" width="5" height="4"/>
+    <rect class="mwindow-warm" x="369" y="144" width="5" height="4"/>
+    <rect class="mwindow-off" x="347" y="156" width="5" height="4"/>
+    <rect class="mwindow" x="358" y="156" width="5" height="4"/>
+    <rect class="mwindow" x="369" y="156" width="5" height="4"/>
+    <rect class="mwindow" x="222" y="133" width="5" height="4"/>
+    <rect class="mwindow-off" x="233" y="133" width="5" height="4"/>
+    <rect class="mwindow" x="244" y="133" width="5" height="4"/>
+    <rect class="mwindow" x="222" y="145" width="5" height="4"/>
+    <rect class="mwindow-warm" x="233" y="145" width="5" height="4"/>
+    <rect class="mwindow-off" x="244" y="145" width="5" height="4"/>
+    <rect class="mwindow" x="222" y="157" width="5" height="4"/>
+    <rect class="mwindow" x="233" y="157" width="5" height="4"/>
+    <rect class="mwindow-warm" x="244" y="157" width="5" height="4"/>
+    <rect class="mwindow" x="436" y="128" width="5" height="4"/>
+    <rect class="mwindow-off" x="447" y="128" width="5" height="4"/>
+    <rect class="mwindow-warm" x="458" y="128" width="5" height="4"/>
+    <rect class="mwindow" x="436" y="140" width="5" height="4"/>
+    <rect class="mwindow" x="447" y="140" width="5" height="4"/>
+    <rect class="mwindow-off" x="458" y="140" width="5" height="4"/>
+    <rect class="mwindow-warm" x="436" y="152" width="5" height="4"/>
+    <rect class="mwindow" x="447" y="152" width="5" height="4"/>
+    <rect class="mwindow" x="458" y="152" width="5" height="4"/>
+    <rect class="mground" x="0" y="278" width="680" height="6"/>
+    <rect class="mriver" x="0" y="284" width="680" height="36"/>
+    <rect class="mreflection" x="272" y="290" width="42" height="6" rx="1"/>
+    <rect class="mreflection" x="345" y="294" width="36" height="4" rx="1"/>
+    <rect class="mreflection" x="220" y="292" width="28" height="4" rx="1"/>
+    <rect class="mreflection" x="434" y="291" width="26" height="5" rx="1"/>
+    <rect class="mreflection" x="514" y="295" width="20" height="3" rx="1"/>
+    <rect class="mreflection" x="104" y="296" width="18" height="3" rx="1"/>
+  </svg>
 </section>
 
 <!-- WORK -->
@@ -1180,7 +1271,7 @@ footer {
 
 <!-- TOOLS -->
 <section id="tools">
-  <p class="section-label reveal" data-en="My toolkit">My toolkit</p>
+  <p class="section-label reveal" data-en="My toolkit">My toolkit <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="display:inline-block;vertical-align:middle;margin-left:10px;opacity:0.7;" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="8" height="8" rx="1" stroke="rgba(79,142,247,0.9)" stroke-width="1"/><rect x="6" y="6" width="4" height="4" rx="0.5" fill="rgba(79,142,247,0.3)" stroke="rgba(79,142,247,0.6)" stroke-width="0.5"/><line x1="2" y1="6" x2="4" y2="6" stroke="rgba(79,142,247,0.7)" stroke-width="1" stroke-linecap="round"/><line x1="2" y1="10" x2="4" y2="10" stroke="rgba(79,142,247,0.7)" stroke-width="1" stroke-linecap="round"/><line x1="12" y1="6" x2="14" y2="6" stroke="rgba(79,142,247,0.7)" stroke-width="1" stroke-linecap="round"/><line x1="12" y1="10" x2="14" y2="10" stroke="rgba(79,142,247,0.7)" stroke-width="1" stroke-linecap="round"/><line x1="6" y1="2" x2="6" y2="4" stroke="rgba(79,142,247,0.7)" stroke-width="1" stroke-linecap="round"/><line x1="10" y1="2" x2="10" y2="4" stroke="rgba(79,142,247,0.7)" stroke-width="1" stroke-linecap="round"/><line x1="6" y1="12" x2="6" y2="14" stroke="rgba(79,142,247,0.7)" stroke-width="1" stroke-linecap="round"/><line x1="10" y1="12" x2="10" y2="14" stroke="rgba(79,142,247,0.7)" stroke-width="1" stroke-linecap="round"/></svg></p>
   <div class="tools-categories">
 
     <div class="tools-row-flat reveal">
