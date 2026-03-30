@@ -36,7 +36,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-
 /* INTRO OVERLAY */
 #intro-overlay {
   position:fixed;inset:0;z-index:9000;
@@ -125,7 +124,6 @@ nav {
 .nav-links a:hover { color:var(--text); }
 .hamburger { display:none; }
 .mobile-menu { display:none; }
-
 
 /* HERO */
 #hero {
@@ -282,7 +280,6 @@ nav {
   letter-spacing:.15em;text-transform:uppercase;color:var(--amber);
 }
 
-
 .work-logo {
   height:24px;width:auto;max-width:120px;
   object-fit:contain;
@@ -337,7 +334,6 @@ nav {
 }
 .work-card:hover { border-color:var(--border2); }
 
-/* Default visible state */
 .work-card-label {
   font-family:var(--syne);font-size:9px;font-weight:700;
   letter-spacing:.2em;text-transform:uppercase;color:var(--amber);
@@ -354,7 +350,6 @@ nav {
   transition:opacity .3s, transform .3s;
 }
 
-/* Hover overlay */
 .work-card-overlay {
   position:absolute;inset:0;
   background:var(--surface);
@@ -382,7 +377,6 @@ nav {
 .work-card-overlay-body {
   font-size:12px;color:var(--muted2);line-height:1.7;
 }
-
 
 /* QUOTE */
 #quote {
@@ -416,50 +410,54 @@ nav {
   letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
 }
 
-/* TOOLS */
+/* TOOLS — FLAT (always open) */
 #tools {
   padding:140px 60px;
   background:var(--bg2);
   border-top:1px solid var(--border);
 }
 .tools-categories {
-  display:flex;flex-direction:column;gap:2px;
+  display:flex;flex-direction:column;
   margin-top:8px;
 }
-.tools-row {
+.tools-row-flat {
+  display:grid;
+  grid-template-columns:220px 1fr;
+  align-items:center;
   border:1px solid var(--border);
-  overflow:hidden;
+  border-bottom:none;
+  background:var(--bg);
   transition:border-color .25s;
 }
-.tools-row:hover { border-color:var(--border2); }
-.tools-row-label {
-  padding:24px 32px;background:var(--bg);
-  display:flex;align-items:center;justify-content:space-between;
-  font-family:var(--syne);font-size:10px;font-weight:700;
-  letter-spacing:.18em;text-transform:uppercase;color:var(--amber);
-  cursor:none;user-select:none;
-  transition:background .2s;
+.tools-row-flat:last-child {
+  border-bottom:1px solid var(--border);
 }
-.tools-row-label:hover { background:var(--surface); }
-.tools-row-toggle {
-  width:20px;height:20px;border:1px solid var(--border2);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-  transition:all .3s;
+.tools-row-flat:hover {
+  border-color:var(--border2);
 }
-.tools-row.open .tools-row-toggle { background:var(--amber);border-color:var(--amber); }
-.tools-row-toggle svg { transition:transform .3s; }
-.tools-row.open .tools-row-toggle svg { transform:rotate(45deg); }
-.tools-row-toggle svg line { stroke:var(--muted2);transition:stroke .3s; }
-.tools-row.open .tools-row-toggle svg line { stroke:var(--bg); }
-.tools-row-items {
-  display:flex;flex-wrap:wrap;align-items:center;gap:10px;
-  padding:0 32px;background:var(--bg);
-  max-height:0;overflow:hidden;
-  transition:max-height .4s ease, padding .4s ease;
+.tools-row-flat-label {
+  padding:22px 32px;
+  font-family:var(--syne);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--amber);
+  border-right:1px solid var(--border);
+  align-self:stretch;
+  display:flex;
+  align-items:center;
+  transition:border-color .25s;
 }
-.tools-row.open .tools-row-items {
-  max-height:200px;
-  padding:20px 32px 24px;
+.tools-row-flat:hover .tools-row-flat-label {
+  border-right-color:var(--border2);
+}
+.tools-row-flat-items {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:10px;
+  padding:18px 32px;
 }
 .tool-pill {
   display:inline-flex;align-items:center;gap:8px;
@@ -676,23 +674,19 @@ footer {
   .gettoknow-grid { grid-template-columns:1fr; }
   .gettoknow-left { border-right:none;border-bottom:1px solid var(--border);padding-right:0;padding-bottom:40px; }
   .gettoknow-right { padding-left:0;padding-top:40px; }
-  .work-item { grid-template-columns:1fr; }
-  .work-right { border-left:none;border-top:1px solid var(--border);padding-left:0;padding-top:40px;margin-top:40px; }
+  .tools-row-flat { grid-template-columns:160px 1fr; }
 }
 
 /* RESPONSIVE — MOBILE */
 @media (max-width: 640px) {
-  /* Cursor off on touch */
   body { cursor:auto; }
   #cur, #cur-ring { display:none; }
 
-  /* Nav */
   nav { padding:20px 24px; }
   .nav-links { display:none; }
   .hamburger { display:flex; }
   .mobile-menu { display:flex; }
 
-  /* Hamburger */
   .hamburger {
     display:flex;flex-direction:column;gap:5px;
     background:none;border:none;cursor:pointer;padding:4px;z-index:200;
@@ -705,7 +699,6 @@ footer {
   .hamburger.open span:nth-child(2) { opacity:0; }
   .hamburger.open span:nth-child(3) { transform:rotate(-45deg) translate(4px,-4px); }
 
-  /* Mobile menu */
   .mobile-menu {
     position:fixed;inset:0;background:var(--bg);z-index:150;
     display:flex;flex-direction:column;justify-content:center;align-items:center;gap:40px;
@@ -718,33 +711,26 @@ footer {
   }
   .mobile-menu a:hover { color:var(--amber); }
 
-  /* Sections padding */
   #hero,#bring,#pov,#quote,#work,#tools,#gettoknow,#about,#contact,footer {
     padding-left:24px;padding-right:24px;
   }
   #hero { padding-bottom:60px; }
   #bring,#pov,#quote,#work,#tools,#gettoknow,#about,#contact { padding-top:80px;padding-bottom:80px; }
 
-  /* Hero */
   .hero-tag { margin-bottom:20px; }
   .hero-foot { flex-direction:column;align-items:flex-start;gap:28px; }
   .hero-bio { font-size:14px; }
   .scroll-indicator { display:none; }
 
-  /* Bring */
   .bring-grid { grid-template-columns:1fr;gap:2px; }
-
-  /* POV */
   .pov-para { font-size:20px; }
 
-  /* Work cards — tap to expand below */
   .work-cards { grid-template-columns:1fr 1fr;gap:2px;display:grid; }
   .work-card { min-height:140px;padding:20px 16px;cursor:pointer; }
   .work-card-stat { font-size:clamp(26px,7vw,40px); }
   .work-card-stat-sub { font-size:11px; }
   .work-meta { gap:12px;flex-wrap:wrap; }
 
-  /* On mobile, overlay becomes an expand below the card */
   .work-card-overlay {
     position:static;
     opacity:1;transform:none;
@@ -758,7 +744,6 @@ footer {
   .work-card:hover .work-card-stat-sub { opacity:1; }
   .work-card:hover .work-card-label { opacity:1; }
 
-  /* Expanded card style */
   .work-card.tapped {
     grid-column: span 2;
     background:var(--surface);
@@ -771,39 +756,43 @@ footer {
     flex-direction:column;gap:8px;padding:0;
   }
 
-  /* Tools */
-  .tools-row-label { padding:20px 24px; }
+  /* Tools flat — stack on mobile */
+  .tools-row-flat {
+    grid-template-columns:1fr;
+  }
+  .tools-row-flat-label {
+    border-right:none;
+    border-bottom:1px solid var(--border);
+    padding:16px 24px;
+  }
+  .tools-row-flat-items {
+    padding:14px 24px;
+  }
 
-  /* Get to know me */
   .gettoknow-grid { grid-template-columns:1fr; }
   .gettoknow-left { border-right:none;border-bottom:1px solid var(--border);padding-right:0;padding-bottom:40px; }
   .gettoknow-right { padding-left:0;padding-top:40px; }
   .gettoknow-playlist-embed { min-height:280px; }
   .gettoknow-playlist-embed iframe { min-height:280px; }
 
-  /* About */
   .about-grid { grid-template-columns:1fr;gap:40px; }
   .about-stats { grid-template-columns:repeat(3,1fr); }
   .about-stat-num { font-size:28px; }
   .about-photo { max-width:100%; }
   .about-photo-frame { max-width:100%; }
 
-  /* Contact */
   #contact { padding-top:80px;padding-bottom:80px; }
   .contact-links { flex-direction:column;gap:12px;align-items:stretch; }
   .contact-link { justify-content:center; }
 
-  /* Footer */
   footer { flex-direction:column;gap:12px;text-align:center;padding:32px 24px; }
 
-  /* Intro overlay */
   #intro-photo { width:min(320px, 90vw); }
   #intro-name { font-size:clamp(24px,8vw,42px); }
 }
 </style>
 </head>
 <body>
-
 
 <!-- INTRO OVERLAY -->
 <div id="intro-overlay">
@@ -854,13 +843,13 @@ footer {
   <div class="hero-orb2"></div>
   <p class="hero-tag" data-en="Benjamin Maunier · Montréal">Benjamin Maunier · Montréal</p>
   <h1 class="hero-h1">
-    Hi, I'm Ben.<br>
-    Montréal-based PM<br>
-    building products that <em>matter.</em>
+    Hi, I'm Ben. 👋<br>
+    Montréal-based<br>
+    <em>Product Manager.</em>
   </h1>
   <div class="hero-foot">
-    <p class="hero-bio" data-en="I uncover the signals that matter, align teams around what to build next, and drive decisions that elevate performance. <strong>More than data — clarity and direction.</strong>">
-      I uncover the signals that matter, align teams around what to build next, and drive decisions that elevate performance. <strong>More than data — clarity and direction.</strong>
+    <p class="hero-bio">
+      My mission is to uncover the signals that matter, align teams around what to build next, and drive product decisions that elevate performance and user satisfaction. <strong>More than data, I deliver the clarity and direction needed to scale with confidence.</strong>
     </p>
     <a href="#contact" class="hero-cta">
       <span data-en="Let's build together">Let's build together</span>
@@ -880,17 +869,17 @@ footer {
     <div class="bring-card reveal">
       <div class="bring-number">01</div>
       <h3 class="bring-title">AI-<em>augmented</em> PM</h3>
-      <p class="bring-desc" data-en="The gap between idea and execution has shrunk dramatically. I leverage AI to move faster, think deeper, and stay closer to what users and engineers actually need.">The gap between idea and execution has shrunk dramatically. I leverage AI to move faster, think deeper, and stay closer to what users and engineers actually need.</p>
+      <p class="bring-desc">The gap between idea and execution has shrunk dramatically. I leverage AI to move faster, think deeper, and stay closer to what users and engineers actually need.</p>
     </div>
     <div class="bring-card reveal">
       <div class="bring-number">02</div>
       <h3 class="bring-title">Psychology-<em>driven</em> decisions</h3>
-      <p class="bring-desc" data-en="Master's in UX Research. Published papers. I am always trying to understand why people do what they do and design products that align with it.">Master's in UX Research. Published papers. I am always trying to understand why people do what they do and design products that align with it.</p>
+      <p class="bring-desc">Master's in UX Research. Published papers. I am always trying to understand why people do what they do and design products that align with it.</p>
     </div>
     <div class="bring-card reveal">
       <div class="bring-number">03</div>
       <h3 class="bring-title">Research <em>at scale</em></h3>
-      <p class="bring-desc" data-en="200+ user interviews across industries. I've built research frameworks that reduce dev waste by 30% and cut guesswork out of roadmaps.">200+ user interviews across industries. I've built research frameworks that reduce dev waste by 30% and cut guesswork out of roadmaps.</p>
+      <p class="bring-desc">200+ user interviews across industries. I've built research frameworks that reduce dev waste by 30% and cut guesswork out of roadmaps.</p>
     </div>
   </div>
 </section>
@@ -901,16 +890,16 @@ footer {
   <p class="section-label reveal" data-en="Point of View">Point of View</p>
   <div class="pov-inner">
     <div class="pov-manifesto">
-      <p class="pov-para reveal" data-en="In the AI age, PMs work with something that doesn't just execute - <em>it anticipates.</em> The gap between idea and execution has shrunk so much that good PMs have been set free.">
+      <p class="pov-para reveal">
         In the AI age, PMs work with something that doesn't just execute, <em>it anticipates.</em> The gap between idea and execution has shrunk so much that good PMs have been set free.
       </p>
-      <p class="pov-para reveal" data-en="AI automates the craft. What remains is the art - <em>designing for trust,</em> understanding emotion, deciding what deserves to exist.">
+      <p class="pov-para reveal">
         AI automates the craft. What remains is the art - <em>designing for trust,</em> understanding emotion, deciding what deserves to exist.
       </p>
-      <p class="pov-para reveal" data-en="The best PMs of this era won't only optimize funnels. They'll translate between <em>intelligence and intent.</em> Speed isn't progress. Progress is knowing where you're going - and why.">
+      <p class="pov-para reveal">
         The best PMs of this era won't only optimize funnels. They'll translate between <em>intelligence and intent.</em> Speed isn't progress. Progress is knowing where you're going - and why.
       </p>
-      <p class="pov-closer reveal" data-en="Benjamin Maunier · Product Manager · 2026">Benjamin Maunier · Product Manager · 2026</p>
+      <p class="pov-closer reveal">Benjamin Maunier · Product Manager · 2026</p>
     </div>
   </div>
 </section>
@@ -1141,60 +1130,51 @@ footer {
 <section id="tools">
   <p class="section-label reveal" data-en="My toolkit">My toolkit</p>
   <div class="tools-categories">
-    <div class="tools-row reveal">
-      <div class="tools-row-label" onclick="toggleTool(this)">
-        Product & Strategy
-        <div class="tools-row-toggle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-      </div>
-      <div class="tools-row-items">
+
+    <div class="tools-row-flat reveal">
+      <div class="tools-row-flat-label">Product & Strategy</div>
+      <div class="tools-row-flat-items">
         <span class="tool-pill">Notion</span>
         <span class="tool-pill">Jira</span>
         <span class="tool-pill">Linear</span>
       </div>
     </div>
-    <div class="tools-row reveal">
-      <div class="tools-row-label" onclick="toggleTool(this)">
-        AI
-        <div class="tools-row-toggle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-      </div>
-      <div class="tools-row-items">
+
+    <div class="tools-row-flat reveal">
+      <div class="tools-row-flat-label">AI</div>
+      <div class="tools-row-flat-items">
         <span class="tool-pill ai">Claude</span>
         <span class="tool-pill ai">Cursor</span>
         <span class="tool-pill ai">BuildBetter</span>
       </div>
     </div>
-    <div class="tools-row reveal">
-      <div class="tools-row-label" onclick="toggleTool(this)">
-        Research & Data
-        <div class="tools-row-toggle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-      </div>
-      <div class="tools-row-items">
+
+    <div class="tools-row-flat reveal">
+      <div class="tools-row-flat-label">Research & Data</div>
+      <div class="tools-row-flat-items">
         <span class="tool-pill">Maze</span>
         <span class="tool-pill">Amplitude</span>
         <span class="tool-pill">Pendo</span>
       </div>
     </div>
-    <div class="tools-row reveal">
-      <div class="tools-row-label" onclick="toggleTool(this)">
-        Design & Collaboration
-        <div class="tools-row-toggle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-      </div>
-      <div class="tools-row-items">
+
+    <div class="tools-row-flat reveal">
+      <div class="tools-row-flat-label">Design & Collaboration</div>
+      <div class="tools-row-flat-items">
         <span class="tool-pill">Figma</span>
         <span class="tool-pill">FigJam</span>
       </div>
     </div>
-    <div class="tools-row reveal">
-      <div class="tools-row-label" onclick="toggleTool(this)">
-        Development & Delivery
-        <div class="tools-row-toggle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><line x1="5" y1="1" x2="5" y2="9" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="5" x2="9" y2="5" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-      </div>
-      <div class="tools-row-items">
+
+    <div class="tools-row-flat reveal">
+      <div class="tools-row-flat-label">Development & Delivery</div>
+      <div class="tools-row-flat-items">
         <span class="tool-pill">GitLab</span>
         <span class="tool-pill">Confluence</span>
         <span class="tool-pill">Slack</span>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -1243,21 +1223,21 @@ footer {
     </div>
     <div class="about-right">
       <h2 class="about-headline reveal">Scientist first,<br><em>PM second.</em></h2>
-      <p class="about-body reveal" data-en="I started my career running applied research on human behavior at <strong>HEC Montréal's Tech3Lab</strong> — analyzing psychometric, behavioral, and physiological data to understand how people interact with technology. That scientific foundation never left me. I build with the same rigor I researched with.">
+      <p class="about-body reveal">
         I started my career running applied research on human behavior at <strong>HEC Montréal's Tech3Lab</strong> — analyzing psychometric, behavioral, and physiological data to understand how people interact with technology. That scientific foundation never left me. I build with the same rigor I researched with.
       </p>
       <div class="about-stats reveal">
         <div class="about-stat">
           <div class="about-stat-num">7+</div>
-          <div class="about-stat-label" data-en="Years experience">Years experience</div>
+          <div class="about-stat-label">Years experience</div>
         </div>
         <div class="about-stat">
           <div class="about-stat-num">200+</div>
-          <div class="about-stat-label" data-en="User interviews">User interviews</div>
+          <div class="about-stat-label">User interviews</div>
         </div>
         <div class="about-stat">
           <div class="about-stat-num">5</div>
-          <div class="about-stat-label" data-en="Industries">Industries</div>
+          <div class="about-stat-label">Industries</div>
         </div>
       </div>
       <div class="about-pub reveal">
@@ -1283,12 +1263,12 @@ footer {
 <!-- CONTACT -->
 <section id="contact">
   <h2 class="contact-headline reveal">Let's build<br>something <em>worth feeling.</em></h2>
-  <p class="contact-sub reveal" data-en="Open to Senior PM roles in sport, music, and entertainment. Based in Montréal, open to remote.">
+  <p class="contact-sub reveal">
     Open to Senior PM roles in sport, music, and entertainment. Based in Montréal, open to remote.
   </p>
   <div class="contact-links reveal">
     <a href="mailto:benjamin.maunier@gmail.com" class="contact-link primary">
-      <span data-en="Send an email">Send an email</span>
+      <span>Send an email</span>
     </a>
     <a href="https://linkedin.com/in/benjaminmaunier" class="contact-link" target="_blank">
       <span>LinkedIn</span>
@@ -1299,11 +1279,10 @@ footer {
 <!-- FOOTER -->
 <footer>
   <p class="footer-copy">© 2026 Benjamin Maunier</p>
-  <p class="footer-right" data-en="Sr. Product Manager · Montréal">Sr. Product Manager · Montréal</p>
+  <p class="footer-right">Sr. Product Manager · Montréal</p>
 </footer>
 
 <script>
-
 // INTRO OVERLAY
 const overlay = document.getElementById('intro-overlay');
 document.body.style.overflow = 'hidden';
@@ -1315,19 +1294,12 @@ function dismissOverlay() {
 overlay.addEventListener('click', dismissOverlay);
 setTimeout(dismissOverlay, 3500);
 
-// TOOLS ACCORDION
-function toggleTool(label) {
-  const row = label.closest('.tools-row');
-  row.classList.toggle('open');
-}
-
 // MOBILE WORK CARDS — tap to expand
 function initMobileCards() {
   if (window.innerWidth > 640) return;
   document.querySelectorAll('.work-card').forEach(card => {
     card.addEventListener('click', () => {
       const isOpen = card.classList.contains('tapped');
-      // Close all
       document.querySelectorAll('.work-card.tapped').forEach(c => c.classList.remove('tapped'));
       if (!isOpen) card.classList.add('tapped');
     });
@@ -1382,7 +1354,6 @@ const povObs = new IntersectionObserver(entries=>{
   });
 },{threshold:0.6});
 paras.forEach(p=>povObs.observe(p));
-
 
 let currentLang = 'en';
 function setLang(lang){
